@@ -6,7 +6,9 @@ import {Text} from './src/components/Text/Text';
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <Text preset="headingLarge">Alou</Text>
+      <Text preset="headingLarge" style={{fontFamily: 'Satoshi-MediumItalic'}}>
+        Alo
+      </Text>
     </SafeAreaView>
   );
 }
