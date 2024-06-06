@@ -17,7 +17,7 @@ function App(): JSX.Element {
           </Text>
 
           <Box marginBottom="s16">
-            <Button loading title="Entrar" />
+            <Button title="Entrar" />
           </Box>
           <Button loading title="Entrar" />
         </View>

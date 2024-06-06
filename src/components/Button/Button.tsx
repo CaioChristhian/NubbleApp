@@ -1,9 +1,7 @@
 import React from 'react';
-import {ActivityIndicator, TouchableOpacity} from 'react-native';
-import {useTheme} from '@shopify/restyle';
+import {ActivityIndicator} from 'react-native';
 
 import {Text} from '../Text/Text';
-import {Theme} from '../../theme/theme';
 import {Box} from '../Box/Box';
 
 interface ButtonProps {
@@ -12,8 +10,6 @@ interface ButtonProps {
 }
 
 export function Button({title, loading}: ButtonProps) {
-  const {colors} = useTheme<Theme>();
-
   return (
     <Box
       backgroundColor="buttonPrimary"
@@ -21,18 +17,11 @@ export function Button({title, loading}: ButtonProps) {
       height={50}
       alignItems="center"
       justifyContent="center"
-      /*  style={{
-        paddingHorizontal: 20,
-        paddingVertical: 14,
-        backgroundColor: colors.carrotSecondary,
-        alignItems: 'center',
-        borderRadius: 16,
-      }} */
-    >
+      borderRadius="s16">
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Text preset="paragraphMedium" bold>
+        <Text preset="paragraphMedium" bold style={{color: '#FFF'}}>
           {title}
         </Text>
       )}
