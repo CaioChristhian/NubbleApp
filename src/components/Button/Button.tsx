@@ -2,7 +2,7 @@ import React from 'react';
 import {ActivityIndicator} from 'react-native';
 
 import {Text} from '../Text/Text';
-import {Box} from '../Box/Box';
+import {TouchableOpacityBox} from '../Box/Box';
 
 interface ButtonProps {
   loading?: boolean;
@@ -11,7 +11,7 @@ interface ButtonProps {
 
 export function Button({title, loading}: ButtonProps) {
   return (
-    <Box
+    <TouchableOpacityBox
       backgroundColor="buttonPrimary"
       paddingHorizontal="s20"
       height={50}
@@ -25,6 +25,6 @@ export function Button({title, loading}: ButtonProps) {
           {title}
         </Text>
       )}
-    </Box>
+    </TouchableOpacityBox>
   );
 }
