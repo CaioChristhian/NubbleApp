@@ -15,8 +15,8 @@ function App(): JSX.Element {
             Coffstack
           </Text>
 
-          <Button title="Primary" marginBottom="s12" />
-          <Button preset="outline" title="Outline" marginBottom="s12" />
+          <Button disabled title="Primary" marginBottom="s12" />
+          <Button disabled title="Outline" marginBottom="s12" />
           <Button loading title="Loading" />
         </View>
       </SafeAreaView>
