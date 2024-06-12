@@ -6,6 +6,7 @@ import {Text} from './src/components/Text/Text';
 import {Button} from './src/components/Button/Button';
 import {theme} from './src/theme/theme';
 import {EyeOffIcon} from './src/assets/icons/EyeOffIcon';
+import {EyeOnIcon} from './src/assets/icons/EyeOnIcon';
 
 function App(): JSX.Element {
   return (
@@ -20,6 +21,7 @@ function App(): JSX.Element {
           <Button disabled title="Outline" marginBottom="s12" />
           <Button loading title="Loading" />
           <EyeOffIcon />
+          <EyeOnIcon />
         </View>
       </SafeAreaView>
     </ThemeProvider>
