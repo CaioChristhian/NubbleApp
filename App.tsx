@@ -3,8 +3,8 @@ import {SafeAreaView, View} from 'react-native';
 import {ThemeProvider} from '@shopify/restyle';
 
 import {Text} from './src/components/Text/Text';
-import {Button} from './src/components/Button/Button';
 import {theme} from './src/theme/theme';
+import {Icon} from './src/components/Icon/Icon';
 
 function App(): JSX.Element {
   return (
@@ -15,9 +15,7 @@ function App(): JSX.Element {
             Coffstack
           </Text>
 
-          <Button disabled title="Primary" marginBottom="s12" />
-          <Button disabled title="Outline" marginBottom="s12" />
-          <Button loading title="Loading" />
+          <Icon name="eyeOff" color="backgroundContrast" size={20} />
         </View>
       </SafeAreaView>
     </ThemeProvider>
