@@ -3,9 +3,8 @@ import {SafeAreaView, View} from 'react-native';
 import {ThemeProvider} from '@shopify/restyle';
 
 import {Text} from './src/components/Text/Text';
-import {Button} from './src/components/Button/Button';
 import {theme} from './src/theme/theme';
-import {Icon} from './src/assets/icons/Icon';
+import {Icon} from './src/components/Icon/Icon';
 
 function App(): JSX.Element {
   return (
