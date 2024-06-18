@@ -12,17 +12,21 @@ import {useAppTheme} from '../../hooks/useAppTheme';
 interface TextInputProps extends RNTextInputProps {
   label: string;
   errorMessage?: string;
+  RightComponent?: React.ReactElement;
 }
 
 export function TextInput({
   label,
   errorMessage,
+  RightComponent,
   ...rnTextInputProps
 }: TextInputProps) {
   const {colors} = useAppTheme();
   const inputRef = useRef<RNTextInput>(null);
 
   const $TextInputContainer: BoxProps = {
+    alignItems: 'center',
+    flexDirection: 'row',
     borderWidth: errorMessage ? 2 : 1,
     padding: 's16',
     borderColor: errorMessage ? 'error' : 'gray4',
@@ -46,6 +50,7 @@ export function TextInput({
             style={$textInputStyle}
             {...rnTextInputProps}
           />
+          {RightComponent && <Box ml="s16">{RightComponent}</Box>}
         </Box>
         {errorMessage && (
           <Text color="error" preset="paragraphSmall" bold>
@@ -58,6 +63,8 @@ export function TextInput({
 }
 
 const $textInputStyle: TextStyle = {
+  flexGrow: 1,
+  flexShrink: 1,
   padding: 0,
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphMedium,
