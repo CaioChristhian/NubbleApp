@@ -1,13 +1,13 @@
 import React from 'react';
 import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
-import {Icon} from '../../../components/Icon/Icon';
 import {Button} from '../../../components/Button/Button';
 import {Screen} from '../../../components/Screen/Screen';
+import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 
 export function LoginScreen() {
   return (
-    <Screen>
+    <Screen scrollable>
       <Text marginBottom="s8" preset="headingLarge">
         Olá!
       </Text>
@@ -21,8 +21,7 @@ export function LoginScreen() {
         placeholder="Digite seu e-mail"
         boxProps={{mb: 's20'}}
       />
-      <TextInput
-        RightComponent={<Icon name="eyeOn" color="gray2" />}
+      <PasswordInput
         label="Senha"
         placeholder="Digite sua senha"
         boxProps={{mb: 's10'}}
