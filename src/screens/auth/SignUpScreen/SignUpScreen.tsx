@@ -10,9 +10,9 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
-export function SignUpScreen(props: ScreenProps) {
+export function SignUpScreen({navigation}: ScreenProps) {
   function submitForm() {
-    //todo
+    navigation.navigate('SuccessScreen');
   }
 
   return (
