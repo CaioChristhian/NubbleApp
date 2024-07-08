@@ -5,14 +5,18 @@ import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
 import {Button} from '../../../components/Button/Button';
 import {RootStackParamList} from '../../../routes/Routes';
+import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
 
 type ScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'ForgotPasswordScreen'
 >;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function ForgotPasswordScreen({navigation}: ScreenProps) {
+  const {reset} = useResetNavigationSuccess();
+
   function submitForm() {
-    navigation.navigate('SuccessScreen', {
+    reset({
       title: 'Enviamos as \ninstruções para seu e-mail',
       description:
         'Clique no link enviado no seu e-mail para recuperar sua senha',
@@ -22,6 +26,7 @@ export function ForgotPasswordScreen({navigation}: ScreenProps) {
       },
     });
   }
+
   return (
     <Screen canGoBack>
       <Text preset="headingLarge">Esqueci minha {'\n'}senha</Text>
