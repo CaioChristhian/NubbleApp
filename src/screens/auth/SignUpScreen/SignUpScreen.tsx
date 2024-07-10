@@ -2,6 +2,7 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
 import {Button} from '../../../components/Button/Button';
@@ -29,14 +30,14 @@ export function SignUpScreen({navigation}: ScreenProps) {
 
   function submitForm(formValues: SignUpSchema) {
     console.log(formValues);
-    /*  reset({
+    reset({
       title: 'Sua conta foi criada com sucesso!',
       description: 'Agora é só fazer login na nossa plataforma',
       icon: {
         name: 'checkRound',
         color: 'success',
       },
-    }); */
+    });
   }
 
   return (
