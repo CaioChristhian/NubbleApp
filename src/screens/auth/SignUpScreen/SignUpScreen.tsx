@@ -1,5 +1,6 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
@@ -8,20 +9,15 @@ import {RootStackParamList} from '../../../routes/Routes';
 import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
 import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
-
-type SignUpFormType = {
-  username: string;
-  fullName: string;
-  email: string;
-  password: string;
-};
+import {signUpSchema, SignUpSchema} from './signUpSchema';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function SignUpScreen({navigation}: ScreenProps) {
   const {reset} = useResetNavigationSuccess();
-  const {control, formState, handleSubmit} = useForm<SignUpFormType>({
+  const {control, formState, handleSubmit} = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: '',
       fullName: '',
@@ -31,7 +27,7 @@ export function SignUpScreen({navigation}: ScreenProps) {
     mode: 'onChange',
   });
 
-  function submitForm(formValues: SignUpFormType) {
+  function submitForm(formValues: SignUpSchema) {
     console.log(formValues);
     /*  reset({
       title: 'Sua conta foi criada com sucesso!',
@@ -52,9 +48,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
       <FormTextInput
         control={control}
         name="username"
-        rules={{
-          required: 'Username obrigatório',
-        }}
         label="Seu username"
         placeholder="@"
         boxProps={{mb: 's20'}}
@@ -63,9 +56,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
       <FormTextInput
         control={control}
         name="fullName"
-        rules={{
-          required: 'Nome Completo Obrigatório',
-        }}
         label="Nome Completo"
         placeholder="Digite seu nome completo"
         boxProps={{mb: 's20'}}
@@ -74,13 +64,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'Email Obrigatório',
-          pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'E-mail inválido',
-          },
-        }}
         label="E-mail"
         placeholder="Digite seu e-mail"
         boxProps={{mb: 's20'}}
@@ -89,13 +72,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: 'Senha obrigatória',
-          minLength: {
-            value: 8,
-            message: 'Senha deve ter no mínimo 8 caracteres',
-          },
-        }}
         label="Senha"
         placeholder="Digite sua senha"
         boxProps={{mb: 's48'}}
