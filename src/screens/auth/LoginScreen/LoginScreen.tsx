@@ -16,9 +16,6 @@ type LoginFormType = {
 };
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 export function LoginScreen({navigation}: ScreenProps) {
-  /* const [email, setEmail] = useState();
-  const [password, setPassword] = useState(); */
-
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');
   }
