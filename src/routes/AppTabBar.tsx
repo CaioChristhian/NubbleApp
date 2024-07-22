@@ -2,12 +2,23 @@ import React from 'react';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
-import {Box, Icon, Text, TouchableOpacityBox} from '@components';
+import {
+  Box,
+  BoxProps,
+  Icon,
+  Text,
+  TextProps,
+  TouchableOpacityBox,
+  TouchableOpacityBoxProps,
+} from '@components';
+import {useAppSafeArea} from '@hooks';
 import {AppTabBottomTabParamList, mapScreenToProps} from '@routes';
+import {$shadowProps} from '@theme';
 
 export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
+  const {bottom} = useAppSafeArea();
   return (
-    <Box style={{flexDirection: 'row'}}>
+    <Box {...$boxWrapper} style={[{paddingBottom: bottom}, $shadowProps]}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -37,9 +48,7 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
 
         return (
           <TouchableOpacityBox
-            activeOpacity={1}
-            alignItems="center"
-            accessibilityRole="button"
+            {...$itemWrapper}
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
@@ -51,9 +60,8 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
               name={isFocused ? tabItem.icon.focused : tabItem.icon.unfocused}
             />
             <Text
-              color={isFocused ? 'primary' : 'backgroundContrast'}
-              preset="paragraphCaption"
-              semibold>
+              {...$label}
+              color={isFocused ? 'primary' : 'backgroundContrast'}>
               {tabItem.label}
             </Text>
           </TouchableOpacityBox>
@@ -62,3 +70,21 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
     </Box>
   );
 }
+
+const $label: TextProps = {
+  semibold: true,
+  marginTop: 's4',
+  preset: 'paragraphCaption',
+};
+
+const $itemWrapper: TouchableOpacityBoxProps = {
+  activeOpacity: 1,
+  alignItems: 'center',
+  accessibilityRole: 'button',
+};
+
+const $boxWrapper: BoxProps = {
+  backgroundColor: 'background',
+  paddingTop: 's12',
+  flexDirection: 'row',
+};
