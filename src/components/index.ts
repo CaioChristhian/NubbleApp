@@ -11,3 +11,4 @@ export * from './TextInput/TextInput';
 export * from './PostItem/PostItem';
 export * from './PostItem/components/PostHeader';
 export * from './PostItem/components/PostImage';
+export * from './PostItem/components/PostActions';
