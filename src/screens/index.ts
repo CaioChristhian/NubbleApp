@@ -10,3 +10,4 @@ export * from './app/MyProfileScreen/MyProfileScreen';
 export * from './app/NewPostScreen/NewPostScreen';
 
 export * from './app/HomeScreen/components/HomeHeader';
+export * from './app/HomeScreen/components/HomeEmpty';
