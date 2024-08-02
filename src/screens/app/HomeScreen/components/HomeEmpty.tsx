@@ -30,12 +30,6 @@ export function HomeEmpty({loading, error, refetch}: Props) {
     );
   }
 
-  /* return (
-    <Box>
-      <Text preset="paragraphMedium">Não há publicações no seu feed</Text>
-    </Box>
-  ); */
-
   return (
     <Box flex={1} justifyContent="center" alignItems="center">
       {component}
