@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
 
 import {PostComment, usePostCommentList} from '@domain';
 
-import {Box, Screen, TextMessage} from '@components';
+import {Box, Screen} from '@components';
 import {useAppSafeArea} from '@hooks';
 import {AppScreenProps} from '@routes';
 
-import {PostCommentBottom} from './components';
+import {PostCommentBottom, PostCommentTextMessage} from './components';
 import {PostCommentItem} from './components/PostCommentItem';
 
 export function PostCommentScreen({
@@ -15,15 +15,12 @@ export function PostCommentScreen({
 }: AppScreenProps<'PostCommentScreen'>) {
   const postId = route.params.postId;
   const {list, fetchNextPage, hasNextPage} = usePostCommentList(postId);
-  const [message, setMessage] = useState('');
 
   const {bottom} = useAppSafeArea();
 
   function renderItem({item}: ListRenderItemInfo<PostComment>) {
     return <PostCommentItem postComment={item} />;
   }
-
-  function onPressSend() {}
 
   return (
     <Screen flex={1} title="Comentários" canGoBack>
@@ -40,12 +37,7 @@ export function PostCommentScreen({
             />
           }
         />
-        <TextMessage
-          placeholder="Adicione um comentário"
-          value={message}
-          onChangeText={setMessage}
-          onPressSend={onPressSend}
-        />
+        <PostCommentTextMessage postId={postId} />
       </Box>
     </Screen>
   );
